@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    /** 
+     * in laravel 8  this namespace is not defined by deafult, 
+     * if we use this namespace we can use the routing system as previous
+    */
+    protected $namespace = 'App\Http\Controllers';
+    
     /**
      * The path to the "home" route for your application.
      *
