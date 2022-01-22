@@ -59,6 +59,10 @@
                                 </div>
                             </div>
                         </div>
+                        <ul>
+                            <li><a href="{{ url('home') }}">routing url method</a></li>
+                            <li><a href="{{ route('home') }}">routing url method</a></li>
+                        </ul>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                             <div class="flex items-center">

@@ -14,13 +14,26 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::view('home','home');
+
+// Route::redirect('/', 'home');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
 
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); //new laravel 8 routing system
-Route::get('/home', [HomeController::class, 'index'])->name('home'); //new laravel 8 routing system
+
+// Route::get('/home', [HomeController::class, 'index'])->name('home'); //new laravel 8 routing system
+
 // Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home'); //new laravel 8 routing system
-// Route::get('/home', 'HomeController@index')->name('home'); //previous laravel routing system
+
+Route::get('/home', 'HomeController@index')->name('home'); //previous laravel routing system
