@@ -20,9 +20,10 @@ class HelloController extends Controller
         // return view('hello')->with(['name' => 'Fahim', 'age' => '25']);
 
         $name = 'Fahim Sakib';
-        $age = '25';
+        $age  = '25';
+        $data = ['Apple', 'Orange', 'Mango'];
 
-        return view('hello', compact('name', 'age'));
+        return view('hello', compact('name', 'age', 'data'));
         
     }
 
