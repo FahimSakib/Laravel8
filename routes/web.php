@@ -54,3 +54,7 @@ Route::resources([
     'profile' => 'ProfileController',
     'welcome' => 'WelcomeController'
 ]);
+
+// Route::view('/hello', 'hello');
+
+Route::resource('/hello', 'HelloController');
