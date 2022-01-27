@@ -58,3 +58,5 @@ Route::resources([
 // Route::view('/hello', 'hello');
 
 Route::resource('/hello', 'HelloController');
+
+Route::get('contact','ProfileController@contact')->name('contact');
