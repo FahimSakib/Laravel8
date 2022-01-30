@@ -60,3 +60,5 @@ Route::resources([
 Route::resource('/hello', 'HelloController');
 
 Route::get('contact','ProfileController@contact')->name('contact');
+
+Route::resource('product', 'ProductController');
