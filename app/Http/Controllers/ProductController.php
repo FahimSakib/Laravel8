@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Uppercase;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -50,7 +51,7 @@ class ProductController extends Controller
         ];
 
         $validateData = $request->validate([
-            'product_name' => 'required|string',
+            'product_name' => ['required','string', new Uppercase],
             'product_code' => 'required|string',
             'brand_id'     => 'required|integer',
             'category_id'  => 'required|integer',
