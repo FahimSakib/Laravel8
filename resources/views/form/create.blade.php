@@ -4,6 +4,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h3 class="text-center my-4">Create a new product</h3>
+            @if (session('successfull'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Successfull!</strong> {{ session('successfull') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
             <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">

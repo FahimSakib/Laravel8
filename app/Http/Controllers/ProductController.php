@@ -37,7 +37,13 @@ class ProductController extends Controller
     public function store(ProductFormValidation $request)
     {
         $validated_data = $request->validated();
-        dd($validated_data);
+        
+        if($validated_data){
+            session()->flash('successfull', 'The form validated successfully');
+        }else{
+            session()->flash('error', 'The form validated failed!');
+        }
+        return back();
     }
 
     /**
