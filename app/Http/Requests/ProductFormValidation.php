@@ -25,15 +25,15 @@ class ProductFormValidation extends FormRequest
     public function rules()
     {
         return [
-            'product_name' => ['required','string', new Uppercase],
-            'product_code' => 'required|string',
+            'product_name' => 'required|string|unique:products,product_name',
+            'product_code' => 'required|string|unique:products,product_code',
             'brand_id'     => 'required|integer',
             'category_id'  => 'required|integer',
             'price'        => 'required|numeric|min:1',
             'qty'          => 'required|numeric|min:1',
             'min_qty'      => 'required|numeric|min:1',
             'max_qty'      => 'required|numeric|gt:min_qty',
-            'image'        => 'required|image|mimes:png,jpeg,jpg,svg'
+            'image'        => 'nullable|image|mimes:png,jpeg,jpg,svg'
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductFormValidation;
+use App\Models\Product;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,23 @@ class ProductController extends Controller
      */
     public function store(ProductFormValidation $request)
     {
-        $validated_data = $request->validated();
+        $data    = $request->validated();
+        $product = new Product();
+
+        $product->product_name = $data['product_name'];
+        $product->product_code = $data['product_code'];
+        $product->brand_id     = $data['brand_id'];
+        $product->category_id  = $data['category_id'];
+        $product->price        = $data['price'];
+        $product->qty          = $data['qty'];
+        $product->min_qty      = $data['min_qty'];
+        $product->max_qty      = $data['max_qty'];
+        $product->image        = $data['image'];
         
-        if($validated_data){
-            session()->flash('successfull', 'The form validated successfully');
+        if($product->save()){
+            session()->flash('successfull', 'Data stored successfully');
         }else{
-            session()->flash('error', 'The form validated failed!');
+            session()->flash('error', 'Data store failed!');
         }
         return back();
     }
