@@ -14,8 +14,6 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        Brand::create(
-            ['brand_name' => 'Apple']
-        );
+        Brand::factory(10)->create();
     }
 }
