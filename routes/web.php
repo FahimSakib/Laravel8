@@ -116,3 +116,25 @@ Route::get('product/month', function(){
 Route::get('product/year', function(){
     return Product::whereYear('created_at',2022)->get();
 });
+
+Route::get('product/oldest', function(){
+    return Product::oldest()->first();
+});
+
+Route::get('product/latest', function(){
+    return Product::latest()->first();
+});
+
+Route::get('product/order-by', function(){
+    return Product::orderBy('id','desc')->get();
+});
+
+Route::get('product/limit', function(){
+    // return Product::offset(5)->limit(3)->orderBy('id','desc')->get();
+    return Product::skip(5)->take(5)->orderBy('id','desc')->get();
+});
+
+Route::get('product/random-order', function(){
+    // return Product::limit(3)->inRandomOrder()->get();
+    return Product::inRandomOrder()->get()->take(3);
+});
