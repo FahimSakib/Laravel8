@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Models\Phone;
 use App\Models\Product;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,4 +139,12 @@ Route::get('product/limit', function(){
 Route::get('product/random-order', function(){
     // return Product::limit(3)->inRandomOrder()->get();
     return Product::inRandomOrder()->get()->take(3);
+});
+
+Route::get('user', function(){
+    // $user = User::find(1);
+    // return $user->phone->phone_number;
+
+    $phone = Phone::find(1);
+    return $phone->user;
 });
