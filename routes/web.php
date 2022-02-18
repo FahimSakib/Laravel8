@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Models\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,4 +63,18 @@ Route::resource('/hello', 'HelloController');
 
 Route::get('contact','ProfileController@contact')->name('contact');
 
-Route::resource('product', 'ProductController');
+// Route::resource('product', 'ProductController');
+
+Route::get('product', function(){
+    $data = [
+        Product::max('price'),
+        Product::min('price'),
+        Product::count('price'),
+        Product::sum('price'),
+        Product::avg('price'),
+        Product::where('category_id',2)->max('price'),
+        Product::where('category_id',2)->avg('price')
+    ];
+   return $data;
+   
+});
