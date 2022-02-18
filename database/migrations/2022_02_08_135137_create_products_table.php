@@ -17,8 +17,10 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('product_name')->unique();
             $table->string('product_code')->unique();
-            $table->integer('brand_id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->float('price');
             $table->integer('qty');
             $table->integer('min_qty');
