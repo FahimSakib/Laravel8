@@ -78,3 +78,41 @@ Route::get('product', function(){
    return $data;
    
 });
+
+Route::get('product/where', function(){
+    // return Product::Where('category_id',2)->get();
+    // return Product::Where('price','>=',100)->get();
+    return Product::Where(['category_id' => 1, 'brand_id'=>1])->get();
+});
+
+Route::get('product/or-where', function(){
+    return Product::Where('category_id',2)->OrWhere('brand_id',1)->get();
+});
+
+Route::get('product/where-between', function(){
+    return Product::whereBetween('id',[1,4])->get();
+});
+
+Route::get('product/where-not-between', function(){
+    return Product::whereNotBetween('id',[1,10])->get();
+});
+
+Route::get('product/where-in', function(){
+    return Product::whereIn('id',[1,5,7,9])->get();
+});
+
+Route::get('product/date', function(){
+    return Product::whereDate('created_at','2022-02-18')->get();
+});
+
+Route::get('product/day', function(){
+    return Product::whereDay('created_at',18)->get();
+});
+
+Route::get('product/month', function(){
+    return Product::whereMonth('created_at',02)->get();
+});
+
+Route::get('product/year', function(){
+    return Product::whereYear('created_at',2022)->get();
+});
