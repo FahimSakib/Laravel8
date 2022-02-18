@@ -65,21 +65,21 @@ Route::resource('/hello', 'HelloController');
 
 Route::get('contact','ProfileController@contact')->name('contact');
 
-// Route::resource('product', 'ProductController');
+Route::resource('product', 'ProductController');
 
-Route::get('product', function(){
-    $data = [
-        Product::max('price'),
-        Product::min('price'),
-        Product::count('price'),
-        Product::sum('price'),
-        Product::avg('price'),
-        Product::where('category_id',2)->max('price'),
-        Product::where('category_id',2)->avg('price')
-    ];
-   return $data;
+// Route::get('product', function(){
+//     $data = [
+//         Product::max('price'),
+//         Product::min('price'),
+//         Product::count('price'),
+//         Product::sum('price'),
+//         Product::avg('price'),
+//         Product::where('category_id',2)->max('price'),
+//         Product::where('category_id',2)->avg('price')
+//     ];
+//    return $data;
    
-});
+// });
 
 Route::get('product/where', function(){
     // return Product::Where('category_id',2)->get();

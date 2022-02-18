@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductFormValidation;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
@@ -16,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // $products = Product::get();
+        $brands = Brand::first();
+
+        return view('form.index',compact('brands'));
     }
 
     /**
