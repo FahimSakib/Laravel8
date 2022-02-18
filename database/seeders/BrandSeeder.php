@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
@@ -14,6 +15,6 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        Brand::factory(10)->create();
+        Brand::factory(10)->hasProducts()->create();
     }
 }
