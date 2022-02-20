@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'project_id',
     ];
 
     /**
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function phone()
     {
         return $this->hasOne(Phone::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
 }

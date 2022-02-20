@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Models\Phone;
 use App\Models\Product;
+use App\Models\Project;
 use App\Models\User;
 
 /*
@@ -147,4 +148,9 @@ Route::get('user', function(){
 
     $phone = Phone::find(1);
     return $phone->user;
+});
+
+Route::get('project', function(){
+    $project = Project::with('users')->get();
+    return $project[0]->tasks;
 });
