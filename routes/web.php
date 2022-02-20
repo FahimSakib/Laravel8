@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Models\Comment;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,4 +156,21 @@ Route::get('user', function(){
 Route::get('project', function(){
     $project = Project::with('users')->get();
     return $project[0]->tasks;
+});
+
+Route::get('post', function(){
+    // $post = Video::create(['video_name' => 'video four']);
+
+    // $post->comments()->create([
+    //     'body' => 'video four comment four'
+    // ]);
+
+    // $post = Post::with('comments')->find(1);
+
+    // dd($post);
+
+    $comments = Comment::with('commenttable')->get();
+
+    // $comments->commenttable;
+    dd($comments);
 });
