@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductFormValidation;
 use App\Models\Brand;
+use App\Models\Material;
 use App\Models\Product;
 use App\Rules\Uppercase;
 use Illuminate\Http\Request;
@@ -18,9 +19,26 @@ class ProductController extends Controller
     public function index()
     {
         // $products = Product::get();
-        $brands = Brand::first();
+        // $brands = Brand::first();
 
-        return view('form.index',compact('brands'));
+        // $materials = Material::insert([
+        //     ['material_name' => 'water'],
+        //     ['material_name' => 'milk']
+        // ]);
+
+        $products = Product::with('materials')->get();
+        $materials = Material::with('products')->get();
+
+        // $product->materials()->attach(
+        //     [
+        //         1 => ['material_qty' => '5'],
+        //         3 => ['material_qty' => '10'],
+        //         4 => ['material_qty' => '15']
+        //     ]
+        // );
+
+       
+        return view('form.index',compact('products','materials'));
     }
 
     /**
