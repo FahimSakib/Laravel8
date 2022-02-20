@@ -15,8 +15,14 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class)->withTimestamps()->withPivot('material_qty');
     }
 }
