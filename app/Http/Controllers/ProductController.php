@@ -26,8 +26,8 @@ class ProductController extends Controller
         //     ['material_name' => 'milk']
         // ]);
 
-        $products = Product::with('materials')->get();
-        $materials = Material::with('products')->get();
+        $products = Product::with('brand')->get();
+        // $materials = Material::with('products')->get();
 
         // $product->materials()->attach(
         //     [
@@ -38,7 +38,7 @@ class ProductController extends Controller
         // );
 
        
-        return view('form.index',compact('products','materials'));
+        return view('form.index',compact('products'));
     }
 
     /**

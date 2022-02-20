@@ -13,7 +13,7 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class)->withDefault(['brand_name' => 'local']);
     }
 
     public function category()

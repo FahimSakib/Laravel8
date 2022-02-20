@@ -2,7 +2,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <table class="table table-bordered">
+        {{-- <table class="table table-bordered">
             <thead>
                 <th>ID</th>
                 <th>Product Name</th>
@@ -43,6 +43,22 @@
                         </ol>
                     </td>
                 </tr>
+                @endforeach
+            </tbody>
+        </table> --}}
+        <table class="table table-bordered">
+            <thead>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Brand name</th>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->product_name }}</td>
+                        <td>{{ $product->brand->brand_name }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
