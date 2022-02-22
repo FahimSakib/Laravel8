@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Video;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -26,7 +27,15 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('/{lang}', function ($lang) {
     app()->setLocale($lang);
-        return view('welcome');
+    // $data = [
+    //     'name' => 'fahim',
+    //     'home' => 'home'
+    // ];
+    // Cache::put('new', $data, 60*60);
+    // dd(Cache::get('new'));
+
+    $data = Product::GetProducts();
+        return view('welcome',compact('data'));
 });
 
 

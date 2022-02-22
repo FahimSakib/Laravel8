@@ -15,6 +15,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory(10)->forBrand()->forCategory()->create();
+        Product::factory(5)->forBrand()->forCategory()->create();
     }
 }

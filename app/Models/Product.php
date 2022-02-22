@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -24,5 +25,29 @@ class Product extends Model
     public function materials()
     {
         return $this->belongsToMany(Material::class)->withTimestamps()->withPivot('material_qty');
+    }
+
+    public static function GetProducts(){
+       return Cache::remember('_product_list', 60, function(){
+            return Product::take(20)->get();
+        });
+    }
+
+    public static function flush(){
+        return Cache::forget('_product_list');
+    }
+
+    public static function boot(){
+        parent::boot();
+
+        static::created(function(){
+            static::flush();
+        });
+        static::updated(function(){
+            static::flush();
+        });
+        static::deleted(function(){
+            static::flush();
+        });
     }
 }

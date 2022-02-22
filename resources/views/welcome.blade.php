@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <ul>
-                            <li><a href="{{ url('home') }}">routing url method</a></li>
+                            <li><a href="{{ url('/','ba') }}">routing url method and localization in bangla</a></li>
                             <li><a href="{{ route('home') }}">routing url method</a></li>
                         </ul>
 
@@ -131,6 +131,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container-fluid">
+            <table>
+                <tbody>
+                    @php
+                        $i=1;
+                    @endphp
+                    @foreach ($data as $item)
+                    <tr>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $item->product_name }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
