@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Mail\WelcomeMail;
 use App\Models\Comment;
 use App\Models\Phone;
 use App\Models\Post;
@@ -10,6 +11,7 @@ use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Video;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,19 +24,20 @@ use App\Models\Video;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('mail', function () {
+    
+        return view('welcome');
+});
 
 Route::view('home','home');
 
 // Route::redirect('/', 'home');
 
-Route::prefix('')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-});
+// Route::prefix('')->group(function () {
+//     Route::get('/', function () {
+//         return view('welcome');
+//     });
+// });
 
 Auth::routes();
 
