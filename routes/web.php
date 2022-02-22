@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function () {
-    
+Route::get('/{lang}', function ($lang) {
+    app()->setLocale($lang);
         return view('welcome');
 });
 
