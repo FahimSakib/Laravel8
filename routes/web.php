@@ -24,12 +24,14 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('mail', function () {
+Route::get('/', function () {
     
         return view('welcome');
 });
 
-Route::view('home','home');
+
+
+Route::view('home','home')->middleware('verified');
 
 // Route::redirect('/', 'home');
 
@@ -39,7 +41,7 @@ Route::view('home','home');
 //     });
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); //new laravel 8 routing system
 
@@ -47,7 +49,7 @@ Auth::routes();
 
 // Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home'); //new laravel 8 routing system
 
-Route::get('/home', 'HomeController@index')->name('home'); //previous laravel routing system
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'); //previous laravel routing system
 
 // Route::get('/welcome', 'WelcomeController@index');
 
