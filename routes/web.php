@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Video;
+use App\Notifications\TestNotification;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
@@ -35,6 +36,9 @@ Route::get('/', function () {
     // dd(Cache::get('new'));
 
     // $data = Product::GetProducts();
+
+        User::latest()->first()->notify((new TestNotification)->delay(now()->addSeconds(10)));
+        
         return view('welcome');
 });
 
