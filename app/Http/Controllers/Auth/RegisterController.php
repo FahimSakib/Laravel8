@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\NewUser;
 use App\Models\User;
 use App\Mail\WelcomeMail;
 use App\Http\Controllers\Controller;
@@ -66,11 +67,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Mail::to($data['email'])->send(new WelcomeMail($data));
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //option-3 for event declaration:
+        // event(new NewUser($user));
+        return $user;
     }
 }

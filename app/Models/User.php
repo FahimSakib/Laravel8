@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\NewUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,4 +53,18 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Task::class);
     }
+
+    //option-1 for event declaration:
+    // protected $dispatchesEvents = [
+    //     'created' => NewUser::class
+    // ];
+
+    //option-2 for event declaration:
+    // public static function boot(){
+    //     parent::boot();
+
+    //     static::created(function($user){
+    //         event(new NewUser($user));
+    //     });
+    // }
 }

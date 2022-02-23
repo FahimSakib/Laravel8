@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        {{-- <div class="container-fluid">
             <table>
                 <tbody>
                     @php
@@ -146,6 +146,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div> --}}
     </body>
 </html>

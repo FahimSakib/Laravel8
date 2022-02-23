@@ -25,8 +25,8 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/{lang}', function ($lang) {
-    app()->setLocale($lang);
+Route::get('/', function () {
+    // app()->setLocale($lang);
     // $data = [
     //     'name' => 'fahim',
     //     'home' => 'home'
@@ -34,13 +34,13 @@ Route::get('/{lang}', function ($lang) {
     // Cache::put('new', $data, 60*60);
     // dd(Cache::get('new'));
 
-    $data = Product::GetProducts();
-        return view('welcome',compact('data'));
+    // $data = Product::GetProducts();
+        return view('welcome');
 });
 
 
 
-Route::view('home','home')->middleware('verified');
+Route::view('home','home');
 
 // Route::redirect('/', 'home');
 
@@ -50,7 +50,8 @@ Route::view('home','home')->middleware('verified');
 //     });
 // });
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); //new laravel 8 routing system
 
@@ -58,7 +59,7 @@ Auth::routes(['verify' => true]);
 
 // Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home'); //new laravel 8 routing system
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'); //previous laravel routing system
+Route::get('/home', 'HomeController@index')->name('home'); //previous laravel routing system
 
 // Route::get('/welcome', 'WelcomeController@index');
 
