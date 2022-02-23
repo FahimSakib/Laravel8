@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\NewUser;
+use App\Jobs\SendWelcomeMailJob;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,6 +30,6 @@ class SendRegNotification
     public function handle(NewUser $event)
     {
         
-        Mail::to($event->user->email)->send(new WelcomeMail($event->user));
+        SendWelcomeMailJob::dispatch($event->user)->delay(now()->addSeconds(10));
     }
 }
