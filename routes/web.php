@@ -1,19 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\HomeController;
-use App\Mail\WelcomeMail;
-use App\Models\Comment;
-use App\Models\Phone;
 use App\Models\Post;
+
+use App\Models\User;
+use App\Models\Phone;
+use App\Models\Video;
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Project;
-use App\Models\User;
-use App\Models\Video;
-use App\Notifications\TestNotification;
-use Illuminate\Support\Facades\Cache;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
+use App\Notifications\TestNotification;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,11 @@ Route::get('/', function () {
         
         return view('welcome');
 });
+
+Route::get('readed', function () {
+    Auth::user()->unreadNotifications->markAsRead();
+    return back();
+})->name('readed');
 
 
 

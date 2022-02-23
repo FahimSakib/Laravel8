@@ -29,7 +29,7 @@ class TestNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -55,7 +55,8 @@ class TestNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            'id'   => '02',
+            'name' => 'Sakib',
         ];
     }
 }
